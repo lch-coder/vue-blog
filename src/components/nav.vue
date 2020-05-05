@@ -15,7 +15,7 @@
               <router-link to="/">首页</router-link>
             </li>
             <li class="item">
-              <router-link to="/">文章</router-link>
+              <router-link to="/article">文章</router-link>
             </li>
             <li class="item">
               <router-link to="/">归档</router-link>
