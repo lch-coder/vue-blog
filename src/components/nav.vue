@@ -49,7 +49,6 @@
 
 <script>
 export default {
-  name: 'nav',
   data () {
     return {
     }
@@ -62,7 +61,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  /* z-index: 1000; */
+  z-index: 1000;
   width: 100%;
   height: 60px;
   border-bottom: 1px solid #eee;

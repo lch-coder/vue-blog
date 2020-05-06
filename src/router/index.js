@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-const nav = () => import('@/components/nav')
-const slider = () => import('@/components/slider')
 const article = () => import('@/views/articles')
+const index = () => import('@/views/index')
 
 Vue.use(Router)
 
@@ -15,19 +14,17 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/nav',
-      name: 'nav',
-      component: nav
-    },
-    {
-      path: '/article',
-      name: 'article',
-      component: article
-    },
-    {
-      path: '/slider',
-      name: 'slider',
-      component: slider
+      path: '/index',
+      name: 'index',
+      component: index,
+      redirect: '/index/article',
+      children: [
+        {
+          path: 'article',
+          name: 'article',
+          component: article
+        }
+      ]
     }
   ]
 })
