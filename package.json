@@ -17,6 +17,7 @@
     "element-ui": "^2.13.1",
     "highlight.js": "^10.0.2",
     "marked": "^1.0.0",
+    "mavon-editor": "^2.9.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

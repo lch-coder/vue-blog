@@ -7,14 +7,6 @@ const tocObj = {
     this.toc.push({ anchor: anchor, level: level, text: text })
     return anchor
   },
-  // 使用堆栈的方式处理嵌套的ul,li，level即ul的嵌套层次，1是最外层
-  // <ul>
-  //   <li></li>
-  //   <ul>
-  //     <li></li>
-  //   </ul>
-  //   <li></li>
-  // </ul>
   toHTML: function () {
     let levelStack = []
     let result = ''
@@ -76,13 +68,13 @@ class MarkUtils {
     marked.setOptions({
       renderer: this.rendererMD,
       headerIds: false,
-      gfm: true,
-      tables: true,
-      breaks: false,
-      pedantic: false,
-      sanitize: false,
-      smartLists: true,
-      smartypants: false,
+      gfm: true, // 默认：true， 启用Github的风格
+      tables: true, // 默认：true，启动表格， 前提必须gfm: true,
+      breaks: false, // 默认：false，启用回车换行，前提必须gfm: true,
+      pedantic: false, // 默认：false，尽可能地兼容 markdown.pl的晦涩部分。不纠正原始模型任何的不良行为和错误。
+      smartLists: true, // 默认：true，使用比原生markdown更时髦的列表。 旧的列表将可能被作为pedantic的处理内容过滤掉
+      sanitize: false, // 默认：false，对输出进行过滤（清理），将忽略任何已经输入的html代码（标签）
+      smartypants: false, // 默认：false，使用更为时髦的标点，比如在引用语法中加入破折号。
       highlight: function (code) {
         return highlight.highlightAuto(code).value
       }

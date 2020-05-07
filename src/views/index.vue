@@ -1,7 +1,9 @@
 <template>
   <div>
     <myNav></myNav>
-    <router-view class="content" />
+    <div class="content">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -16,11 +18,11 @@ export default {
 
 <style scoped>
 .content {
-  margin-top: 61px!important;
-  min-width: 1200px!important;
-  width: 85%!important;
-  margin: auto!important;
-  display: block!important;
-  margin-top: 61px!important;
+  margin-top: 61px !important;
+  min-width: 1200px !important;
+  width: 85% !important;
+  margin: auto !important;
+  display: block !important;
+  margin-top: 61px !important;
 }
 </style>
