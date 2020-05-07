@@ -5,7 +5,7 @@
         <div class="row-col-1">
           <router-link to="/">
             <img class="logo"
-                 src="../assets/logo.png"
+                 src="../assets/avat.jpg"
                  alt="">
           </router-link>
         </div>

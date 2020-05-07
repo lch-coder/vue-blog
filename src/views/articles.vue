@@ -59,7 +59,7 @@ export default {
 .article {
   display: flex;
   width: 1200px;
-  margin: auto;
+  margin: 0 auto;
 }
 .left {
   width: 850px;

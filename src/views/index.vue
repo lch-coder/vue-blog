@@ -17,5 +17,10 @@ export default {
 <style scoped>
 .content {
   margin-top: 61px!important;
+  min-width: 1200px!important;
+  width: 85%!important;
+  margin: auto!important;
+  display: block!important;
+  margin-top: 61px!important;
 }
 </style>
