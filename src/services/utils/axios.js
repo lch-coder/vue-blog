@@ -74,7 +74,7 @@ error => {
 
 export default {
   setAxiosGetPromise: (url, params = {}) => {
-    return axios.get(url, {params: params}).then(response => {
+    return axios.get(timestamp(url), {params: params}).then(response => {
       return response
     }).catch(err => {
       throw err
@@ -102,4 +102,17 @@ export default {
       throw err
     })
   }
+}
+
+// 判断是否IE浏览器,并生成时间戳
+function timestamp (url) {
+  if (!!window.ActiveXObject || 'ActiveXObject' in window) {
+    var getTimestamp = new Date().getTime()
+    if (url.indexOf('?') > -1) {
+      url = url + '×tamp=' + getTimestamp
+    } else {
+      url = url + '?timestamp=' + getTimestamp
+    }
+  }
+  return url
 }

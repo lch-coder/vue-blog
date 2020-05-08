@@ -16,11 +16,6 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/a',
-      name: 'addArticle',
-      component: addArticle
-    },
-    {
       path: '/index',
       name: 'index',
       component: index,
@@ -37,7 +32,7 @@ export default new Router({
           component: articleDetail
         },
         {
-          path: '/addArticle',
+          path: 'addArticle',
           name: 'addArticle',
           component: addArticle
         }

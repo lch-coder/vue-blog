@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="display:flex">
     <myNav></myNav>
     <div class="content">
       <router-view />
@@ -18,11 +18,10 @@ export default {
 
 <style scoped>
 .content {
-  margin-top: 61px !important;
-  min-width: 1200px !important;
-  width: 85% !important;
-  margin: auto !important;
-  display: block !important;
-  margin-top: 61px !important;
+  display: flex;
+  margin-top: 61px ;
+  min-width: 1200px ;
+  width: 85% ;
+  margin: 61px auto 0 ;
 }
 </style>
