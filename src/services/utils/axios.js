@@ -1,9 +1,9 @@
 import axios from 'axios'
-import {baseUrl} from '../../config/axiosConfig'
+import {baseUrl1} from '../../config/axiosConfig'
 import ElementUI from 'element-ui'
 
 const service = axios.create({
-  baseURL: baseUrl
+  baseURL: baseUrl1
 })
 
 service.defaults.timeout = 60000
@@ -15,8 +15,8 @@ service.defaults.headers['Cache-Control'] = 'no-cache,no-store,must-revalidate,m
 
 // 请求发送前拦截
 service.interceptors.request.use(config => {
-  const token = localStorage.getItem('token')
-  config.headers.common['Authorization'] = 'Bearer ' + token
+  // const token = localStorage.getItem('token')
+  // config.headers.common['Authorization'] = 'Bearer ' + token
   return config
 }, error => {
   console.log(error)

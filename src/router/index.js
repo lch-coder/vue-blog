@@ -9,34 +9,34 @@ const index = () => import('@/views/index')
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
-      path: '/index',
-      name: 'index',
-      component: index,
-      redirect: '/index/article',
-      children: [
+    routes: [
         {
-          path: 'article',
-          name: 'article',
-          component: article
+            path: '/',
+            name: 'HelloWorld',
+            component: HelloWorld,
         },
         {
-          path: 'articleDetail',
-          name: 'articleDetail',
-          component: articleDetail
+            path: '/index',
+            name: 'index',
+            component: index,
+            redirect: '/index/article',
+            children: [
+                {
+                    path: 'article',
+                    name: 'article',
+                    component: article,
+                },
+                {
+                    path: 'articleDetail',
+                    name: 'articleDetail',
+                    component: articleDetail,
+                },
+                {
+                    path: 'addArticle',
+                    name: 'addArticle',
+                    component: addArticle,
+                },
+            ],
         },
-        {
-          path: 'addArticle',
-          name: 'addArticle',
-          component: addArticle
-        }
-      ]
-    }
-  ]
+    ],
 })

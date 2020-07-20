@@ -1,5 +1,6 @@
 
 const baseUrl = 'http://localhost:1081/blog/'
+const baseUrl1 = 'http://10.40.107.241:8088/points/test_system'
 /*
     默认工具栏按钮全部开启, 传入自定义对象
     例如: {
@@ -45,4 +46,4 @@ const toolbars = {
   preview: true // 预览
 }
 
-export { baseUrl, toolbars }
+export { baseUrl, toolbars, baseUrl1 }

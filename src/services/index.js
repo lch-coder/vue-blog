@@ -18,5 +18,6 @@ export default {
   articel_articleList: article.query,
   article_delete: article.deleteArticle,
   article_update: article.update,
-  article_findOne: article.getArticle
+  article_findOne: article.getArticle,
+  get: article.get
 }

@@ -1,12 +1,12 @@
 import axios from 'axios'
-import {baseUrl} from '../../config/axiosConfig'
+import {baseUrl1} from '../../config/axiosConfig'
 
 axios.defaults.timeout = 60000
 axios.defaults.withCredentials = true
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 axios.defaults.headers['Access-Control-Allow-Origin'] = '*'
 axios.defaults.headers['Cache-Control'] = 'no-cache,no-store,must-revalidate,max-age=-1,private'
-axios.defaults.baseURL = baseUrl
+axios.defaults.baseURL = baseUrl1
 
 // 请求发送前拦截
 axios.interceptors.request.use(config => {

@@ -3,6 +3,9 @@
     <mavon-editor ref=md
                   class="editor isFullScreen"
                   :toolbars="toolbars"
+                  :ishljs="true"
+                  :codeStyle="codeStyle"
+                  v-model="value"
                   @save="$save"
                   @imgAdd="$imgAdd"
                   @imgDel="$imgDel">
@@ -16,7 +19,9 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      toolbars: toolbars
+      toolbars: toolbars,
+      codeStyle: 'atom-one-dark',
+      value: ''
     }
   },
   created () {

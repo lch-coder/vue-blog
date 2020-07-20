@@ -23,6 +23,10 @@ const actions = {
   async getArticle ({commit}, options) {
     let res = await services.article_findOne(options)
     return res.data
+  },
+  async get ({commit}, options) {
+    let res = await services.get(options)
+    return res.data
   }
 }
 
