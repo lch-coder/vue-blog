@@ -5,7 +5,7 @@
         <h1 class="title">{{articleDetail.title}}</h1>
         <div class="author">
           <div class="avatar">
-            <img src="../assets/avat.jpg">
+            <img src="../../assets/avat.jpg">
           </div>
           <div class="info">
             <span class="name">{{articleDetail.author}}</span>
@@ -43,7 +43,7 @@
 
 <script>
 /* eslint-disable */
-import markdown from "@/utils/markdown"
+// import markdown from "@/utils/markdown"
 export default {
   data () {
     return {

@@ -1,58 +1,99 @@
 <template>
-  <div class="nav">
-    <div class="nav-content">
-      <div class="nav-rows">
-        <el-row>
-          <el-col :span="3">
-            <router-link to="/">
-              <img class="logo"
-                   src="../assets/avat.jpg"
-                   alt="">
-            </router-link>
-          </el-col>
-          <el-col :span="16">
-            <ul>
-              <li class="item">
-                <router-link to="/">首页</router-link>
-              </li>
-              <li class="item">
-                <router-link to="/article">文章</router-link>
-              </li>
-              <li class="item">
-                <router-link to="/">归档</router-link>
-              </li>
-              <li class="item">
-                <router-link to="/">留言</router-link>
-              </li>
-              <li class="item">
-                <router-link to="/">关于</router-link>
-              </li>
-            </ul>
-          </el-col>
-          <el-col :span="4">
-            <div class="nav-right">
-              <el-button size="small"
-                         type="primary">登录</el-button>
-              <el-button size="small"
-                         type="danger">注册</el-button>
+    <div class="nav">
+        <div class="nav-content">
+            <div class="nav-rows">
+                <el-row>
+                    <el-col :span="3">
+                        <router-link to="/">
+                            <img class="logo" src="../assets/avat.jpg" alt="" />
+                        </router-link>
+                    </el-col>
+                    <el-col :span="12">
+                        <ul>
+                            <el-menu
+                                :router="true"
+                                :default-active="activeIndex"
+                                active-text-color="#409eff"
+                                mode="horizontal"
+                                @select="handleSelect"
+                            >
+                                <el-menuItem
+                                    :route="item.path"
+                                    :index="item.index"
+                                    v-for="(item, index) in navList"
+                                    :key="index"
+                                >
+                                    {{ item.name }}
+                                </el-menuItem>
+                            </el-menu>
+                        </ul>
+                    </el-col>
+                    <el-col :span="4">
+                        <el-input
+                            v-model="input"
+                            placeholder="请输入内容"
+                        ></el-input>
+                    </el-col>
+                    <el-col :span="4">
+                        <div class="nav-right">
+                            <el-button size="small" type="primary"
+                                >登录</el-button
+                            >
+                            <el-button size="small" type="danger"
+                                >注册</el-button
+                            >
+                        </div>
+                    </el-col>
+                </el-row>
             </div>
-          </el-col>
-        </el-row>
-      </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-    }
-  }
+    data() {
+        return {
+            input: '',
+            activeIndex: '0',
+            navList: [
+                {
+                    index: '0',
+                    path: '/',
+                    name: '首页',
+                },
+                {
+                    index: '1',
+                    path: '/articles',
+                    name: '文章',
+                },
+                {
+                    index: '2',
+                    path: '/archive',
+                    name: '归档',
+                },
+                {
+                    index: '3',
+                    path: '/message',
+                    name: '留言',
+                },
+                {
+                    index: '4',
+                    path: '/about',
+                    name: '关于',
+                },
+            ],
+        }
+    },
+    methods: {
+        handleSelect(val) {
+            this.activeIndex = val
+        },
+    },
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .nav {
     position: fixed;
     top: 0;
@@ -62,76 +103,37 @@ export default {
     height: 60px;
     border-bottom: 1px solid #eee;
     background-color: #fff;
-}
-.nav-content {
-    width: 1200px;
-    height: 100%;
-    margin: 0 auto;
-}
-.nav-rows {
-    position: relative;
-    height: 100%;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    margin-left: -10px;
-    margin-right: -10px;
-}
-.logo {
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-}
-
-.item {
-    float: left;
-    height: 60px;
-    line-height: 60px;
-    border-bottom: 2px solid transparent;
-    color: #909399;
-    font-size: 14px;
-    padding: 0 20px;
-    transition: border-color 0.3s, background-color 0.3s, color 0.3s;
-    box-sizing: border-box;
-}
-.item > a:hover {
-    cursor: pointer;
-}
-.nav-right {
-    position: relative;
-    padding-top: 15px;
-    text-align: right;
-}
-.login-button {
-    line-height: 1;
-    padding: 9px 15px;
-    font-size: 12px;
-    border-radius: 3px;
-    color: #fff;
-    background-color: #409eff;
-    border-color: #409eff;
-    margin: 0;
-    outline: 0;
-    display: inline-block;
-    white-space: nowrap;
-    cursor: pointer;
-    border: 1px solid #dcdfe6;
-    box-sizing: border-box;
-    text-align: center;
-}
-.register-button {
-    line-height: 1;
-    margin-left: 10px;
-    padding: 9px 15px;
-    font-size: 12px;
-    border-radius: 3px;
-    color: #fff;
-    background-color: #f56c6c;
-    border-color: #f56c6c;
-    outline: 0;
-    display: inline-block;
-    white-space: nowrap;
-    cursor: pointer;
-    border: 1px solid #dcdfe6;
-    box-sizing: border-box;
+    .nav-content {
+        width: 1200px;
+        height: 100%;
+        margin: 0 auto;
+        .nav-rows {
+            position: relative;
+            height: 100%;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin-left: -10px;
+            margin-right: -10px;
+            .logo {
+                height: 60px;
+                width: 60px;
+                border-radius: 50%;
+            }
+            .el-menu.el-menu--horizontal {
+                border-bottom: none;
+            }
+            .el-menu--horizontal > .el-menu-item {
+                cursor: pointer;
+                &:hover {
+                    color: rgb(64, 158, 255);
+                }
+            }
+        }
+        .nav-right {
+            position: relative;
+            padding-top: 15px;
+            text-align: right;
+        }
+    }
 }
 </style>
