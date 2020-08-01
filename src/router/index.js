@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 const article = () => import('@/views/article/articles')
 const articleDetail = () => import('@/views/article/articleDetail')
-// const addArticle = () => import('@/views/newArticle')
+const addArticle = () => import('@/views/article/newArticle')
 const index = () => import('@/views/index')
 
 Vue.use(Router)
@@ -38,14 +38,13 @@ export default new Router({
                             name: 'detail',
                             component: articleDetail,
                         },
+                        {
+                            path: 'add',
+                            name: 'add',
+                            component: addArticle,
+                        },
                     ],
                 },
-
-                // {
-                //     path: 'addArticle',
-                //     name: 'addArticle',
-                //     component: addArticle,
-                // },
             ],
         },
     ],

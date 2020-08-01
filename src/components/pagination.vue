@@ -23,7 +23,7 @@ export default {
         pageSizes: {
             type: Array,
             default() {
-                return [10, 20, 30, 40, 50, 100, 300, 500]
+                return [10, 30, 50, 100]
             },
         },
         pageSize: {
@@ -31,14 +31,19 @@ export default {
             default: 10,
         },
         totalPage: Number,
-        currentPage: Number,
+        currentPage: {
+            type: Number,
+            default() {
+                return 1
+            },
+        },
     },
     methods: {
-        handleSizeChange(e) {
-            this.$emit('handleSizeChange', e)
+        handleSizeChange(val) {
+            this.$emit('handleSizeChange', val)
         },
-        handleCurrentChange(e) {
-            this.$emit('handleCurrentChange', e)
+        handleCurrentChange(val) {
+            this.$emit('handleCurrentChange', val)
         },
     },
 }

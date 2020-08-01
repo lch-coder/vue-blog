@@ -8,7 +8,7 @@
                             <img class="logo" src="../assets/avat.jpg" alt="" />
                         </router-link>
                     </el-col>
-                    <el-col :span="12">
+                    <el-col :span="16">
                         <ul>
                             <el-menu
                                 :router="true"
@@ -27,12 +27,6 @@
                                 </el-menuItem>
                             </el-menu>
                         </ul>
-                    </el-col>
-                    <el-col :span="4">
-                        <el-input
-                            v-model="input"
-                            placeholder="请输入内容"
-                        ></el-input>
                     </el-col>
                     <el-col :span="4">
                         <div class="nav-right">
@@ -54,7 +48,6 @@
 export default {
     data() {
         return {
-            input: '',
             activeIndex: '0',
             navList: [
                 {

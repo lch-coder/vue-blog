@@ -12,16 +12,30 @@
                         <h4 class="title">{{ article.title }}</h4>
                         <p class="abstract">{{ article.desc }}</p>
                         <div class="meta">
-                            <span>查看 {{ article.meta.views }}</span>
-                            <span>评论 {{ article.meta.comments }}</span>
+                            <span>
+                                <i class="el-icon-view"></i>查看
+                                {{ article.meta.views }}</span
+                            >
+                            <span>
+                                <i class="el-icon-edit-outline"></i>评论
+                                {{ article.meta.comments }}</span
+                            >
                             <span>赞 {{ article.meta.likes }}</span>
-                            <span v-if="article.create_time" class="time">
-                                <!-- {{ formatTime(article.create_time) }} -->
+                            <span class="time"
+                                >发布时间：
+                                {{ article.create_time }}
                             </span>
                         </div>
                     </div>
                 </li>
             </ul>
+            <pagination
+                @handleSizeChange="handleSizeChange"
+                @handleCurrentChange="handleCurrentChange"
+                :current-page="query.pageNumber"
+                :totalPage="query.totalPage"
+                :pageSize="query.pageSize"
+            />
         </div>
         <slider></slider>
     </div>
@@ -30,13 +44,20 @@
 <script>
 /* eslint-disable */
 import slider from '@/components/slider'
+import pagination from '@/components/pagination'
 // import { formatTime } from '../../utils/index'
 export default {
     components: {
         slider,
+        pagination,
     },
     data() {
         return {
+            query: {
+                pageNumber: 1,
+                pageSize: 10,
+                totalPage: 20, //总条数，不是总页数
+            },
             article: {
                 code: 0,
                 message: '操作成功！',
@@ -178,67 +199,74 @@ export default {
             },
         }
     },
-    created() {
-        console.log('sasa')
+    created() {},
+    methods: {
+        //每页最多显示条数10   20   30   50
+        handleSizeChange(val) {
+            console.log(val)
+        },
+        //翻页
+        handleCurrentChange(val) {
+            console.log(val)
+        },
     },
-    methods: {},
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .article {
     display: flex;
     width: 1200px;
     margin: 0 auto;
-}
-.left {
-    width: 850px;
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    padding-right: 20px !important;
-}
-.item {
-    line-height: 20px;
-    position: relative;
-    padding: 15px 0;
-    padding-right: 150px;
-    border-bottom: 1px solid #f0f0f0;
-    word-wrap: break-word;
-    cursor: pointer;
-    text-align: left;
-}
-.img {
-    position: absolute;
-    top: 50%;
-    margin-top: -50px;
-    right: 0;
-    width: 125px;
-    height: 100px;
-}
-.title {
-    color: #333;
-    margin: 7px 0 4px;
-    display: inherit;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.5;
-}
-.abstract {
-    min-height: 30px;
-    margin: 0 0 8px;
-    font-size: 13px;
-    line-height: 24px;
-    color: #555;
-}
-.meta {
-    padding-right: 0 !important;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 20px;
-}
-.meta span {
-    margin-right: 10px;
-    color: #666;
+    .left {
+        width: 850px;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        padding-right: 20px !important;
+        .item {
+            line-height: 20px;
+            position: relative;
+            padding: 15px 0;
+            padding-right: 150px;
+            border-bottom: 1px solid #f0f0f0;
+            word-wrap: break-word;
+            cursor: pointer;
+            text-align: left;
+            .img {
+                position: absolute;
+                top: 50%;
+                margin-top: -50px;
+                right: 0;
+                width: 125px;
+                height: 100px;
+            }
+            .title {
+                color: #333;
+                margin: 7px 0 4px;
+                display: inherit;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 1.5;
+            }
+            .abstract {
+                min-height: 30px;
+                margin: 0 0 8px;
+                font-size: 13px;
+                line-height: 24px;
+                color: #555;
+            }
+            .meta {
+                padding-right: 0 !important;
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 20px;
+                span {
+                    margin-right: 10px;
+                    color: #666;
+                }
+            }
+        }
+    }
 }
 </style>
