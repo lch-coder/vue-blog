@@ -63,66 +63,66 @@ export default {
 
 <style scoped>
 .detail {
-  width: 100%;
+    width: 100%;
 }
 .left {
-  width: 75%;
-  margin-right: 2%;
-  float: left;
+    width: 75%;
+    margin-right: 2%;
+    float: left;
 }
 .header {
-  width: 100%;
-  height: 160px;
+    width: 100%;
+    height: 160px;
 }
 .title {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 34px;
-  font-weight: 700;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 34px;
+    font-weight: 700;
 }
 .author {
-  position: relative;
-  margin: 30px 0 0 0;
-  height: 48px;
-  padding-left: 50px;
+    position: relative;
+    margin: 30px 0 0 0;
+    height: 48px;
+    padding-left: 50px;
 }
 .avatar {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 48px;
-  height: 48px;
-  vertical-align: middle;
-  display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 48px;
+    height: 48px;
+    vertical-align: middle;
+    display: inline-block;
 }
 .avatar > img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
 }
 .info {
-  float: left;
-  vertical-align: middle;
-  margin-left: 8px;
-  padding: 8px 0;
+    float: left;
+    vertical-align: middle;
+    margin-left: 8px;
+    padding: 8px 0;
 }
 .meta-item {
-  padding-right: 5px;
-  font-size: 12px;
-  color: #969696;
+    padding-right: 5px;
+    font-size: 12px;
+    color: #969696;
 }
 .tags {
-  float: right;
-  padding-top: 15px;
+    float: right;
+    padding-top: 15px;
 }
 .tag {
-  margin-left: 5px;
-  border-right: 2px solid #eee;
+    margin-left: 5px;
+    border-right: 2px solid #eee;
 }
 .clearfix {
-  clear: both;
+    clear: both;
 }
 .content {
-  /* min-height: 300px; */
+    /* min-height: 300px; */
 }
 </style>

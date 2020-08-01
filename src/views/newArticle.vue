@@ -68,17 +68,17 @@ export default {
 
 <style scoped>
 .editor-wrap {
-  margin: auto;
-  width: 100%;
-  height: 100%;
+    margin: auto;
+    width: 100%;
+    height: 100%;
 }
 .editor {
-  min-height: 700px;
-  height: 700px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+    min-height: 700px;
+    height: 700px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 .isFullScreen {
-  z-index: 100;
+    z-index: 100;
 }
 </style>
