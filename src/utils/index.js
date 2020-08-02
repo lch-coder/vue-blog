@@ -23,3 +23,15 @@ export default {
         return Y + M + D + h + m + s
     },
 }
+
+// import 'highlight.js/styles/googlecode.css'
+// import hljs from 'highlight.js' //导入代码高亮文件
+
+// async function highlighthandle(){
+//     await hljs;
+//     let highlight = document.querySelectorAll('code,pre');
+//     highlight.forEach((block)=>{
+//        hljs.highlightBlock(block);
+//     })
+// }
+// highlighthandle();

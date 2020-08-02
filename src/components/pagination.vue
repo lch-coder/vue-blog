@@ -1,6 +1,7 @@
 <template lang="html">
     <div class="pages">
         <el-pagination
+            v-if="totalPage > 0"
             @size-change="handleSizeChange"
             @current-change="handleCurrentChange"
             :current-page="currentPage"

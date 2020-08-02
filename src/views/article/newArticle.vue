@@ -5,6 +5,7 @@
                 <el-form-item label="标题">
                     <el-input
                         v-model="form.title"
+                        style="width: 50%;"
                         placeholder="请输入标题"
                         autofocus
                     ></el-input>
@@ -28,6 +29,8 @@
                 <el-form-item label="简介">
                     <el-input
                         type="textarea"
+                        autosize
+                        style="width: 50%;"
                         v-model="form.desc"
                         placeholder="请输入简介"
                         autofocus
@@ -194,16 +197,10 @@ export default {
             delete this.img_file[pos]
         },
     },
-    mounted() {
-        this.userId = localStorage.getItem('userId')
-    },
 }
 </script>
 <style scoped lang="less">
 .new-article {
     margin-top: 20px;
-    /deep/ .el-input {
-        width: 50%;
-    }
 }
 </style>
