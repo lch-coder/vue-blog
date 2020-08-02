@@ -1,9 +1,13 @@
 import axios from 'axios'
-import { baseUrl1 } from '../config/axiosConfig'
+import qs from 'qs'
+import { baseUrl } from '../config/axiosConfig'
 import { Message } from 'element-ui'
 
 const service = axios.create({
-    baseURL: baseUrl1,
+    baseURL: baseUrl,
+    paramsSerializer: params => {
+        return qs.stringify({ params: params })
+    },
 })
 
 service.defaults.timeout = 60000
@@ -91,7 +95,7 @@ service.interceptors.response.use(
 export default {
     setAxiosGetPromise: (url, params = {}) => {
         return service
-            .get(timestamp(url), { params: params })
+            .get(timestamp(url), { params })
             .then(response => {
                 return response
             })

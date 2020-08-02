@@ -1,28 +1,26 @@
 /* eslint-disable no-unused-vars */
 import services from '../../../services'
 
-const state = {
-}
+const state = {}
 
 const actions = {
-  async addTag ({commit}, options) {
-    let res = await services.tag_addTag(options)
-    return res.data
-  },
-  async tagList ({commit}, query) {
-    let res = await services.tag_query(query)
-    return res.data
-  },
-  async deleteTag ({commit}, options) {
-    let res = await services.tag_delete(options)
-    return res.data
-  }
+    async addTag({ commit }, options) {
+        let res = await services.tag_addTag(options)
+        return res.data
+    },
+    async getTagList({ commit }, query) {
+        let res = await services.tag_query(query)
+        return res.data
+    },
+    async deleteTag({ commit }, options) {
+        let res = await services.tag_delete(options)
+        return res.data
+    },
 }
 
-const mutations = {
-}
+const mutations = {}
 export default {
-  state,
-  actions,
-  mutations
+    state,
+    actions,
+    mutations,
 }
