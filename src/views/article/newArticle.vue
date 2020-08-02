@@ -70,6 +70,7 @@
 </template>
 <script>
 import editor from '@/components/mavonEditor'
+import { mapActions } from 'vuex'
 export default {
     components: {
         editor,
@@ -86,8 +87,14 @@ export default {
             tagList: [{ _id: 1, name: '动漫' }],
         }
     },
-    created() {},
+    created() {
+        this.addArticle1()
+    },
     methods: {
+        ...mapActions(['addArticle']),
+        addArticle1() {
+            this.addArticle()
+        },
         handleMarkdownChange(value, render) {
             this.form.content = value
             this.form.html = render
@@ -112,38 +119,38 @@ export default {
                 this.addArticle(1)
             }
         },
-        addArticle(state) {
-            let html = this.$refs.md.d_render
-            let article = {
-                userId: this.userId,
-                title: this.title,
-                content: this.context,
-                html: html,
-                tags: this.tags,
-                state: state,
-            }
-            this.$store
-                .dispatch('addArticle', article)
-                .then(res => {
-                    if (res.isSuccess !== false) {
-                        this.$message({
-                            message: '保存成功',
-                            type: 'success',
-                        })
-                        this.title = ''
-                        this.context = ''
-                        this.tags = []
-                    } else {
-                        this.$message({
-                            message: res.message,
-                            type: 'error',
-                        })
-                    }
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-        },
+        // addArticle(state) {
+        //     let html = this.$refs.md.d_render
+        //     let article = {
+        //         userId: this.userId,
+        //         title: this.title,
+        //         content: this.context,
+        //         html: html,
+        //         tags: this.tags,
+        //         state: state,
+        //     }
+        //     this.$store
+        //         .dispatch('addArticle', article)
+        //         .then(res => {
+        //             if (res.isSuccess !== false) {
+        //                 this.$message({
+        //                     message: '保存成功',
+        //                     type: 'success',
+        //                 })
+        //                 this.title = ''
+        //                 this.context = ''
+        //                 this.tags = []
+        //             } else {
+        //                 this.$message({
+        //                     message: res.message,
+        //                     type: 'error',
+        //                 })
+        //             }
+        //         })
+        //         .catch(err => {
+        //             console.log(err)
+        //         })
+        // },
         saveArticle() {
             if (this.title.length < 1) {
                 this.$message({

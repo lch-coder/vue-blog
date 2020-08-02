@@ -7,9 +7,9 @@ import article from './modules/blog/article'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  modules: {
-    user,
-    tag,
-    article
-  }
+    modules: {
+        user,
+        tag,
+        article,
+    },
 })
