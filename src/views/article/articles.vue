@@ -53,7 +53,7 @@ export default {
         return {
             search: {
                 pageNumber: 1,
-                pageSize: 20,
+                pageSize: 10,
                 totalPage: 20, //总条数，不是总页数
             },
             articleList: [],
@@ -76,6 +76,8 @@ export default {
             this.articleListApi({ params, page }).then(res => {
                 if (res.code === 200) {
                     this.articleList = res.data.list
+                    this.search.pageNumber = res.data.pageNumber
+                    this.search.totalPage = res.data.totalCount
                 } else {
                     this.$message.error(res.msg)
                 }
@@ -91,13 +93,17 @@ export default {
                 }
             })
         },
-        // 切换页数
+        // 切换每页条数
         handleSizeChange(val) {
             console.log(val)
+            this.search.pageSize = val
+            this.search.pageNumber = 1
+            this.getArticleList()
         },
         //翻页
         handleCurrentChange(val) {
-            console.log(val)
+            this.search.pageNumber = val
+            this.getArticleList()
         },
     },
 }

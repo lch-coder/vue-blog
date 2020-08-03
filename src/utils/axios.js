@@ -94,7 +94,6 @@ service.interceptors.response.use(
 
 export default {
   setAxiosGetPromise: (url, params = {}) => {
-    console.log(params, 'params');
     return service
       .get(timestamp(url), { params: params })
       .then(response => {
