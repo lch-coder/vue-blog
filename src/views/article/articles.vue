@@ -2,27 +2,25 @@
     <div class="article">
         <div class="left">
             <ul>
-                <li
-                    v-for="article in article.data.list"
-                    :key="article._id"
-                    class="item"
-                >
+                <li v-for="article in article.data.list" :key="article._id" class="item">
                     <img class="img" :src="article.img_url" />
                     <div class="content">
                         <h4 class="title">{{ article.title }}</h4>
                         <p class="abstract">{{ article.desc }}</p>
                         <div class="meta">
                             <span>
-                                <i class="el-icon-view"></i>查看
-                                {{ article.meta.views }}</span
-                            >
+                                <i class="el-icon-view"></i>
+                                查看
+                                {{ article.meta.views }}
+                            </span>
                             <span>
-                                <i class="el-icon-edit-outline"></i>评论
-                                {{ article.meta.comments }}</span
-                            >
+                                <i class="el-icon-edit-outline"></i>
+                                评论
+                                {{ article.meta.comments }}
+                            </span>
                             <span>赞 {{ article.meta.likes }}</span>
-                            <span class="time"
-                                >发布时间：
+                            <span class="time">
+                                发布时间：
                                 {{ article.create_time }}
                             </span>
                         </div>
