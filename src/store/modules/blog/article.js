@@ -4,27 +4,27 @@ import services from '../../../services'
 const state = {}
 
 const actions = {
-  async articleList ({ commit }, query) {
+  async articleListApi ({ commit }, query) {
     let res = await services.articel_articleList(query)
     return res.data
   },
-  async addArticle ({ commit }, options) {
+  async addArticleApi ({ commit }, options) {
     let res = await services.articel_addArticle(options)
     return res.data
   },
-  async deleteArticle ({ commit }, options) {
+  async deleteArticleApi ({ commit }, options) {
     let res = await services.article_delete(options)
     return res.data
   },
-  async updateArticle ({ commit }, options) {
+  async updateArticleApi ({ commit }, options) {
     let res = await services.article_update(options._id, options)
     return res.data
   },
-  async getArticle ({ commit }, options) {
+  async getArticleApi ({ commit }, options) {
     let res = await services.article_findOne(options)
     return res.data
   },
-  async get ({ commit }, options) {
+  async getApi ({ commit }, options) {
     let res = await services.get(options)
     return res.data
   },

@@ -1,5 +1,5 @@
 <template>
-    <div style="display:flex">
+    <div class="container">
         <myNav></myNav>
         <div class="content">
             <router-view />
@@ -16,13 +16,17 @@ export default {
 }
 </script>
 
-<style scoped>
-.content {
+<style scoped lang='less'>
+.container {
     display: flex;
-    margin-top: 61px;
-    min-width: 1200px;
-    width: 85%;
     justify-content: center;
-    margin: 61px auto 0;
+    .content {
+        display: flex;
+        position: absolute;
+        min-width: 1200px;
+        width: 85%;
+        justify-content: center;
+        top: 61px;
+    }
 }
 </style>

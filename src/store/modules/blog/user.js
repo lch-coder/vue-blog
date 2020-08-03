@@ -5,15 +5,15 @@ const state = {
 }
 
 const actions = {
-  async userList ({commit}, query) {
+  async userListApi ({ commit }, query) {
     let res = await services.user_query(query)
     return res.data
   },
-  async login ({commit}, options) {
+  async loginApi ({ commit }, options) {
     let res = await services.user_login(options)
     return res.data
   },
-  async regist ({commit}, options) {
+  async registApi ({ commit }, options) {
     let res = await services.user_regist(options)
     return res.data
   }

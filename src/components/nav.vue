@@ -5,7 +5,7 @@
                 <el-row>
                     <el-col :span="3">
                         <router-link to="/">
-                            <img class="logo" src="../assets/avat.jpg" alt="" />
+                            <img class="logo" src="../assets/avat.jpg" alt />
                         </router-link>
                     </el-col>
                     <el-col :span="16">
@@ -22,20 +22,14 @@
                                     :index="item.index"
                                     v-for="(item, index) in navList"
                                     :key="index"
-                                >
-                                    {{ item.name }}
-                                </el-menuItem>
+                                >{{ item.name }}</el-menuItem>
                             </el-menu>
                         </ul>
                     </el-col>
                     <el-col :span="4">
                         <div class="nav-right">
-                            <el-button size="small" type="primary"
-                                >登录</el-button
-                            >
-                            <el-button size="small" type="danger"
-                                >注册</el-button
-                            >
+                            <el-button size="small" type="primary">登录</el-button>
+                            <el-button size="small" type="danger">注册</el-button>
                         </div>
                     </el-col>
                 </el-row>
@@ -88,6 +82,8 @@ export default {
 
 <style scoped lang="less">
 .nav {
+    display: flex;
+    justify-content: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -99,7 +95,6 @@ export default {
     .nav-content {
         width: 1200px;
         height: 100%;
-        margin: 0 auto;
         .nav-rows {
             position: relative;
             height: 100%;

@@ -84,10 +84,10 @@ export default {
         this.getTagLists()
     },
     methods: {
-        ...mapActions(['addArticle', 'getTagList']),
+        ...mapActions(['addArticleApi', 'getTagListApi']),
         getTagLists() {
             let params = { deleted: false }
-            this.getTagList(params).then(res => {
+            this.getTagListApi(params).then(res => {
                 if (res.code === 200) {
                     this.tagList = res.data.list
                 } else {
@@ -96,7 +96,7 @@ export default {
             })
         },
         addArticle1(body) {
-            this.addArticle(body).then(res => {
+            this.addArticleApi(body).then(res => {
                 if (res.code === 200) {
                     console.log(res)
                 } else {
