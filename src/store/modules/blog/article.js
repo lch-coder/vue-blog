@@ -20,7 +20,7 @@ const actions = {
     let res = await services.article_update(options._id, options)
     return res.data
   },
-  async getArticleApi ({ commit }, options) {
+  async getArticleDetailApi ({ commit }, options) {
     let res = await services.article_findOne(options)
     return res.data
   },

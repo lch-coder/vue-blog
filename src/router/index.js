@@ -8,44 +8,44 @@ const index = () => import('@/views/index')
 Vue.use(Router)
 
 export default new Router({
-    routes: [
+  routes: [
+    {
+      path: '/',
+      name: '',
+      redirect: '/index/article/list',
+    },
+    {
+      path: '/index',
+      name: 'index',
+      component: index,
+      redirect: '/index/article/list',
+      children: [
         {
-            path: '/',
-            name: '',
-            redirect: '/index/article/list',
+          path: 'article',
+          name: 'article',
+          redirect: '/index/article/list',
+          component: {
+            template: '<div><router-view></router-view></div>',
+          },
+          children: [
+            {
+              path: 'list',
+              name: 'list',
+              component: article,
+            },
+            {
+              path: 'detail',
+              name: 'detail',
+              component: articleDetail,
+            },
+            {
+              path: 'add',
+              name: 'add',
+              component: addArticle,
+            },
+          ],
         },
-        {
-            path: '/index',
-            name: 'index',
-            component: index,
-            redirect: '/index/article/list',
-            children: [
-                {
-                    path: 'article',
-                    name: 'article',
-                    redirect: '/index/article/list',
-                    component: {
-                        template: '<div><router-view></router-view></div>',
-                    },
-                    children: [
-                        {
-                            path: 'list',
-                            name: 'list',
-                            component: article,
-                        },
-                        {
-                            path: 'detail',
-                            name: 'detail',
-                            component: articleDetail,
-                        },
-                        {
-                            path: 'add',
-                            name: 'add',
-                            component: addArticle,
-                        },
-                    ],
-                },
-            ],
-        },
-    ],
+      ],
+    },
+  ],
 })

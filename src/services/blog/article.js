@@ -18,4 +18,4 @@ export const update = (query, options) =>
   axios.setAxiosPutPromise('article/' + query, options)
 
 export const getArticle = _id =>
-  axios.setAxiosGetPromise('article/findOne/' + _id)
+  axios.setAxiosGetPromise('article/' + _id)

@@ -2,7 +2,12 @@
     <div class="article">
         <div class="left">
             <ul>
-                <li v-for="article in articleList" :key="article._id" class="item">
+                <li
+                    v-for="article in articleList"
+                    :key="article._id"
+                    class="item"
+                    @click="getArticleDetail(article._id)"
+                >
                     <img class="img" :src="article.img_url" />
                     <div class="content">
                         <h4 class="title">{{ article.title }}</h4>
@@ -91,6 +96,14 @@ export default {
                 } else {
                     this.$message.error(res.msg)
                 }
+            })
+        },
+        getArticleDetail(id) {
+            this.$router.push({
+                path: '/index/article/detail',
+                query: {
+                    id: id,
+                },
             })
         },
         // 切换每页条数
