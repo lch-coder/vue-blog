@@ -6,7 +6,9 @@ import { Message } from 'element-ui'
 const service = axios.create({
   baseURL: baseUrl,
   paramsSerializer: params => {
-    return qs.stringify({ params: params })
+    return qs.stringify(params, {
+      indices: false
+    })
   },
 })
 
