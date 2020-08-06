@@ -1,44 +1,47 @@
 <template>
     <div class="article">
         <div class="left">
-            <ul>
-                <li
-                    v-for="article in articleList"
-                    :key="article._id"
-                    class="item"
-                    @click="getArticleDetail(article._id)"
-                >
-                    <img class="img" :src="article.img_url" />
-                    <div class="content">
-                        <h4 class="title">{{ article.title }}</h4>
-                        <p class="abstract">{{ article.desc }}</p>
-                        <div class="meta">
-                            <span>
-                                <i class="el-icon-view"></i>
-                                查看
-                                {{ article.views }}
-                            </span>
-                            <span>
-                                <i class="el-icon-edit-outline"></i>
-                                评论
-                                {{ article.comments }}
-                            </span>
-                            <span>赞 {{ article.likes }}</span>
-                            <span class="time">
-                                发布时间：
-                                {{ article.create_time }}
-                            </span>
+            <template v-if="articleList.length>0">
+                <ul>
+                    <li
+                        v-for="article in articleList"
+                        :key="article._id"
+                        class="item"
+                        @click="getArticleDetail(article._id)"
+                    >
+                        <img class="img" :src="article.img_url" />
+                        <div class="content">
+                            <h4 class="title">{{ article.title }}</h4>
+                            <p class="abstract">{{ article.desc }}</p>
+                            <div class="meta">
+                                <span>
+                                    <i class="el-icon-view"></i>
+                                    查看
+                                    {{ article.views }}
+                                </span>
+                                <span>
+                                    <i class="el-icon-edit-outline"></i>
+                                    评论
+                                    {{ article.comments }}
+                                </span>
+                                <span>赞 {{ article.likes }}</span>
+                                <span class="time">
+                                    发布时间：
+                                    {{ article.create_time }}
+                                </span>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
-            <pagination
-                @handleSizeChange="handleSizeChange"
-                @handleCurrentChange="handleCurrentChange"
-                :current-page="search.pageNumber"
-                :totalPage="search.totalPage"
-                :pageSize="search.pageSize"
-            />
+                    </li>
+                </ul>
+                <pagination
+                    @handleSizeChange="handleSizeChange"
+                    @handleCurrentChange="handleCurrentChange"
+                    :current-page="search.pageNumber"
+                    :totalPage="search.totalPage"
+                    :pageSize="search.pageSize"
+                />
+            </template>
+            <div v-else style="text-align:center;">暂无数据</div>
         </div>
         <slider></slider>
     </div>

@@ -30,7 +30,13 @@
                 <span class="clearfix" />
             </div>
             <div class="content">
-                <div id="content" class="article-detail" v-html="articleDetail.content"></div>
+                <mavonEditor
+                    :ishljs="false"
+                    id="content"
+                    :codeStyle="{'agate':1}"
+                    class="article-detail"
+                    v-html="articleDetail.html"
+                ></mavonEditor>
             </div>
         </div>
         <div class="right"></div>
@@ -38,9 +44,14 @@
 </template>
 
 <script>
+import { mavonEditor } from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 // import markdown from "@/utils/markdown"
 import { mapActions } from 'vuex'
 export default {
+    components: {
+        mavonEditor,
+    },
     data() {
         return {
             tagList: [],
@@ -73,68 +84,68 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .detail {
     width: 100%;
+    .left {
+        width: 75%;
+        margin-right: 2%;
+        float: left;
+        .header {
+            width: 100%;
+            height: 160px;
+        }
+        .title {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 34px;
+            font-weight: 700;
+        }
+        .author {
+            position: relative;
+            margin: 30px 0 0 0;
+            height: 48px;
+            padding-left: 50px;
+            .avatar {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 48px;
+                height: 48px;
+                vertical-align: middle;
+                display: inline-block;
+                > img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                }
+            }
+            .info {
+                float: left;
+                vertical-align: middle;
+                margin-left: 8px;
+                padding: 8px 0;
+                .meta-item {
+                    padding-right: 5px;
+                    font-size: 12px;
+                    color: #969696;
+                }
+            }
+            .tags {
+                float: right;
+                padding-top: 15px;
+                .tag {
+                    margin-left: 5px;
+                    border-right: 2px solid #eee;
+                }
+            }
+        }
+        .clearfix {
+            clear: both;
+        }
+        #content {
+            padding: 20px;
+        }
+    }
 }
-.left {
-    width: 75%;
-    margin-right: 2%;
-    float: left;
-}
-.header {
-    width: 100%;
-    height: 160px;
-}
-.title {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 34px;
-    font-weight: 700;
-}
-.author {
-    position: relative;
-    margin: 30px 0 0 0;
-    height: 48px;
-    padding-left: 50px;
-}
-.avatar {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 48px;
-    height: 48px;
-    vertical-align: middle;
-    display: inline-block;
-}
-.avatar > img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-}
-.info {
-    float: left;
-    vertical-align: middle;
-    margin-left: 8px;
-    padding: 8px 0;
-}
-.meta-item {
-    padding-right: 5px;
-    font-size: 12px;
-    color: #969696;
-}
-.tags {
-    float: right;
-    padding-top: 15px;
-}
-.tag {
-    margin-left: 5px;
-    border-right: 2px solid #eee;
-}
-.clearfix {
-    clear: both;
-}
-/* .content { */
-/* min-height: 300px; */
-/* } */
 </style>

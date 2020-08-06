@@ -2,7 +2,7 @@
     <div class="container">
         <myNav></myNav>
         <div class="content">
-            <router-view />
+            <router-view style="width:100%" />
         </div>
     </div>
 </template>
