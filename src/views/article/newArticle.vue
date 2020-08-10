@@ -92,6 +92,7 @@ export default {
             this.addArticleApi(body).then(res => {
                 if (res.code === 200) {
                     console.log(res)
+                    this.$router.push('/')
                 } else {
                     this.$message.error('res.msg')
                 }

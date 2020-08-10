@@ -1,0 +1,28 @@
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6,
+.blog-content p {
+  padding: 10px 0;
+}
+.blog-blog-content pre {
+  border-radius: 2px;
+}
+
+
+.hljs .line {
+  padding: 0;
+  line-height: 1.4;
+}
+.hljs .line .line-label {
+  color: #999;
+  height: 100%;
+  padding: 0 0.8rem 0 0.2rem;
+}
+.hljs .line .line-label > span {
+  color: #999;
+}
+
+

@@ -1,9 +1,9 @@
-// https://www.cherylgood.cn/detail/5bdaf4722382b4646c27143b.html
 const highlight = require('highlight.js')
+import 'highlight.js/styles/pojoaque.css';
 const marked = require('marked')
 const tocObj = {
   add: function (text, level) {
-    var anchor = `#toc${level}${++this.index}`
+    var anchor = `toc${level}${++this.index}`
     this.toc.push({ anchor: anchor, level: level, text: text })
     return anchor
   },
@@ -24,7 +24,6 @@ const tocObj = {
         text +
         '<a></li>\n'
     }
-
     this.toc.forEach(function (item) {
       let levelIndex = levelStack.indexOf(item.level)
       // 没有找到相应level的ul标签，则将li放入新增的ul中
@@ -62,7 +61,7 @@ class MarkUtils {
   constructor() {
     this.rendererMD = new marked.Renderer()
     this.rendererMD.heading = function (text, level, raw) {
-      console.log(raw)
+      console.log(text, level, raw)
       var anchor = tocObj.add(text, level)
       return `<h${level} id=${anchor}>${text}</h${level}>\n`
     }
@@ -90,10 +89,10 @@ class MarkUtils {
       },
     })
   }
-
-  async marked (data) {
+  marked (data) {
     if (data) {
-      let content = await marked(data)
+      data = marked(data).replace(/<pre>/g, "<pre class='hljs'>")
+      let content = marked(data)
       let toc = tocObj.toHTML()
       return { content: content, toc: toc }
     } else {

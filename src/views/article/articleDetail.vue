@@ -30,23 +30,20 @@
                 <span class="clearfix" />
             </div>
             <div class="content">
-                <mavonEditor
-                    :ishljs="false"
-                    id="content"
-                    :codeStyle="{'agate':1}"
-                    class="article-detail"
-                    v-html="articleDetail.html"
-                ></mavonEditor>
+                <div v-html="blogCtx.content" class="blog-content"></div>
+                <!-- <div v-highlight v-html="articleDetail.html"></div> -->
             </div>
         </div>
-        <div class="right"></div>
+        <div class="right">
+            <div v-html="blogCtx.toc"></div>
+        </div>
     </div>
 </template>
 
 <script>
+import markdown from '@/utils/markdown'
 import { mavonEditor } from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
-// import markdown from "@/utils/markdown"
 import { mapActions } from 'vuex'
 export default {
     components: {
@@ -56,6 +53,7 @@ export default {
         return {
             tagList: [],
             articleDetail: {},
+            blogCtx: {},
         }
     },
     created() {
@@ -67,13 +65,13 @@ export default {
             let articleId = this.$route.query.id
             this.getArticleDetailApi(articleId).then(res => {
                 if (res.code === 200) {
-                    console.log(res, 'sksksksks')
                     this.tagList = res.data.tags.map(item => {
                         return {
                             id: item.id,
                             name: item.name,
                         }
                     })
+                    this.blogCtx = markdown.marked(res.data.content)
                     this.articleDetail = res.data
                 } else {
                     this.$message.error(res.msg)

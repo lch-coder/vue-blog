@@ -17,8 +17,8 @@
 </template>
 <script>
 import { mavonEditor } from 'mavon-editor'
+import 'highlight.js/styles/pojoaque.css'
 import 'mavon-editor/dist/css/index.css'
-
 export default {
     components: {
         mavonEditor,

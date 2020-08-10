@@ -91,7 +91,9 @@ export default {
     width: 100%;
     height: 60px;
     border-bottom: 1px solid #eee;
-    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-top: 2px solid #39aa56;
+    background: linear-gradient(120deg, #155799, #159957);
     .nav-content {
         width: 1200px;
         height: 100%;
@@ -107,10 +109,14 @@ export default {
                 width: 60px;
                 border-radius: 50%;
             }
+            /deep/ .el-menu {
+                background-color: transparent;
+            }
             .el-menu.el-menu--horizontal {
                 border-bottom: none;
             }
             .el-menu--horizontal > .el-menu-item {
+                background-color: transparent;
                 cursor: pointer;
                 &:hover {
                     color: rgb(64, 158, 255);
