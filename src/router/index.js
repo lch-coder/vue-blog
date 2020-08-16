@@ -4,6 +4,7 @@ const article = () => import('@/views/article/articles')
 const articleDetail = () => import('@/views/article/articleDetail')
 const addArticle = () => import('@/views/article/newArticle')
 const index = () => import('@/views/index')
+const home = () => import('@/views/home')
 
 Vue.use(Router)
 
@@ -12,8 +13,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: '',
-      redirect: '/index/article/list',
+      name: 'home',
+      component: home
     },
     {
       path: '/index',

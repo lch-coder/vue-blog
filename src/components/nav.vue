@@ -42,7 +42,7 @@
 export default {
     data() {
         return {
-            activeIndex: '0',
+            activeIndex: '1',
             navList: [
                 {
                     index: '0',
@@ -51,7 +51,7 @@ export default {
                 },
                 {
                     index: '1',
-                    path: '/articles',
+                    path: '/index/article/list',
                     name: '文章',
                 },
                 {
