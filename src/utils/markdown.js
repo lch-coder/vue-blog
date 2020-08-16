@@ -3,7 +3,7 @@ import 'highlight.js/styles/pojoaque.css';
 const marked = require('marked')
 const tocObj = {
   add: function (text, level) {
-    var anchor = `toc${level}${++this.index}`
+    var anchor = `#toc${level}${++this.index}`
     this.toc.push({ anchor: anchor, level: level, text: text })
     return anchor
   },
@@ -60,8 +60,8 @@ const tocObj = {
 class MarkUtils {
   constructor() {
     this.rendererMD = new marked.Renderer()
+    // eslint-disable-next-line
     this.rendererMD.heading = function (text, level, raw) {
-      console.log(text, level, raw)
       var anchor = tocObj.add(text, level)
       return `<h${level} id=${anchor}>${text}</h${level}>\n`
     }

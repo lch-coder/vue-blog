@@ -84,11 +84,18 @@ export default {
 
 <style scoped lang="less">
 .detail {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 66px);
+    padding-top: 10px;
+    font-size: 16px;
     width: 100%;
     .left {
         width: 75%;
-        margin-right: 2%;
-        float: left;
+        margin-right: 20px;
+        margin-bottom: 2%;
+        flex-shrink: 0;
         .header {
             width: 100%;
             height: 160px;
@@ -143,6 +150,15 @@ export default {
         }
         #content {
             padding: 20px;
+        }
+    }
+    .right {
+        flex-shrink: 0;
+        width: calc(25% - 20px);
+        margin-top: 100px;
+        box-sizing: border-box;
+        /deep/ li {
+            padding: 5px 0;
         }
     }
 }
