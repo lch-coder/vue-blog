@@ -1,10 +1,10 @@
 import axios from '../../utils/axios'
 
 export const addArticle = options => {
-  console.log(options, 'biubiu');
   return axios.setAxiosPostPromise('article/addArticle', options)
 }
 
+export const archive = () => axios.setAxiosGetPromise('article/archive')
 
 export const query = query => axios.setAxiosGetPromise('article', query)
 

@@ -8,6 +8,10 @@ const actions = {
     let res = await services.articel_articleList(query)
     return res.data
   },
+  async archiveListApi ({ commit }, query) {
+    let res = await services.articel_archiveList()
+    return res.data
+  },
   async addArticleApi ({ commit }, options) {
     let res = await services.articel_addArticle(options)
     return res.data

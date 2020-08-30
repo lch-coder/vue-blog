@@ -3,6 +3,7 @@ import Router from 'vue-router'
 const article = () => import('@/views/article/articles')
 const articleDetail = () => import('@/views/article/articleDetail')
 const addArticle = () => import('@/views/article/newArticle')
+const archive = () => import('@/views/article/archive')
 const index = () => import('@/views/index')
 const home = () => import('@/views/home')
 
@@ -39,6 +40,11 @@ export default new Router({
               path: 'detail',
               name: 'detail',
               component: articleDetail,
+            },
+            {
+              path: 'archive',
+              name: 'archive',
+              component: archive,
             },
             {
               path: 'add',

@@ -56,7 +56,7 @@ export default {
                 },
                 {
                     index: '2',
-                    path: '/archive',
+                    path: '/index/article/archive',
                     name: '归档',
                 },
                 {

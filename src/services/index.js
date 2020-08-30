@@ -16,6 +16,7 @@ export default {
   // 文章
   articel_addArticle: article.addArticle,
   articel_articleList: article.query,
+  articel_archiveList: article.archive,
   article_delete: article.deleteArticle,
   article_update: article.update,
   article_findOne: article.getArticle,
