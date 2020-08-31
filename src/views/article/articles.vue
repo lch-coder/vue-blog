@@ -1,6 +1,7 @@
 <template>
     <div class="article">
         <div class="left">
+            <loading v-if="isLoading"></loading>
             <template v-if="articleList.length>0">
                 <ul>
                     <li
@@ -50,12 +51,13 @@
 <script>
 import slider from '@/components/slider'
 import pagination from '@/components/pagination'
+import loading from '@/components/loading'
 import { mapActions } from 'vuex'
-// import { formatTime } from '../../utils/index'
 export default {
     components: {
         slider,
         pagination,
+        loading,
     },
     data() {
         return {
@@ -66,6 +68,7 @@ export default {
             },
             articleList: [],
             tagList: [],
+            isLoading: true,
         }
     },
     created() {
@@ -90,6 +93,7 @@ export default {
                     this.$message.error(res.msg)
                 }
             })
+            this.isLoading = false
         },
         getTagList() {
             let params = { deleted: false }
