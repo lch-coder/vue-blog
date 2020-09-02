@@ -3,14 +3,30 @@ const path = require('path')
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
+
+// webpack 配置合并插件
 const merge = require('webpack-merge')
+
+// webpack 基本配置
 const baseWebpackConfig = require('./webpack.base.conf')
+
+// webpack 复制文件和文件夹的插件
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+
+// 自动生成 html 并且注入到 .html 文件中的插件
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+// 提取css的插件
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+// webpack 优化压缩和优化 css 的插件
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+
+// js压缩插件
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
+// 如果当前环境为测试环境，则使用测试环境
+// 否则，使用生产环境
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : require('../config/prod.env')
@@ -23,17 +39,23 @@ const webpackConfig = merge(baseWebpackConfig, {
       usePostCSS: true
     })
   },
+  // 是否开启 sourceMap
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
+    // 编译输出的静态资源根路径 创建dist文件夹
     path: config.build.assetsRoot,
+    // 编译输出的文件名
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
+    // 没有指定输出名的文件输出的文件名 或可以理解为 非入口文件的文件名，而又需要被打包出来的文件命名配置,如按需加载的模块
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
+    // 配置全局环境为生产环境
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env
     }),
+    // js文件压缩插件
     new UglifyJsPlugin({
       uglifyOptions: {
         compress: {
@@ -44,6 +66,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       parallel: true
     }),
     // extract css into its own file
+    // 将js中引入的css分离的插件
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css'),
       // Setting the following option to `false` will not extract CSS from codesplit chunks.
@@ -113,6 +136,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
 
     // copy custom static assets
+    // 复制静态资源,将static文件内的内容复制到指定文件夹
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),
@@ -123,6 +147,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   ]
 })
 
+// 配置文件开启了gzip压缩
 if (config.build.productionGzip) {
   const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
@@ -141,6 +166,7 @@ if (config.build.productionGzip) {
   )
 }
 
+// 开启包分析的情况时， 给 webpack plugins添加 webpack-bundle-analyzer 插件
 if (config.build.bundleAnalyzerReport) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
