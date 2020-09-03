@@ -31,6 +31,9 @@ const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : require('../config/prod.env')
 
+
+const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin')
+
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
@@ -59,7 +62,10 @@ const webpackConfig = merge(baseWebpackConfig, {
     new UglifyJsPlugin({
       uglifyOptions: {
         compress: {
-          warnings: false
+          warnings: false,
+          // 关闭 debug 和 console
+          drop_debugger: true,
+          drop_console: true
         }
       },
       sourceMap: config.build.productionSourceMap,
@@ -143,7 +149,10 @@ const webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    //显示打包百分比
+    new SimpleProgressWebpackPlugin()
+
   ]
 })
 
@@ -169,7 +178,11 @@ if (config.build.productionGzip) {
 // 开启包分析的情况时， 给 webpack plugins添加 webpack-bundle-analyzer 插件
 if (config.build.bundleAnalyzerReport) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+  // 构建完成后，浏览器会自动打开localhost:8080
+  webpackConfig.plugins.push(new BundleAnalyzerPlugin({
+    analyzerPort: 8080,
+    generateStatsFile: false
+  }))
 }
 
 module.exports = webpackConfig
