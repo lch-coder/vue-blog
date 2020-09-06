@@ -2,7 +2,9 @@
     <div class="container">
         <myNav></myNav>
         <div class="bg-top">
-            <div class="bg"></div>
+            <div class="desc">
+                <h2>ANIME</h2>
+            </div>
         </div>
         <div class="content">
             <router-view class="main" />
@@ -33,6 +35,21 @@ export default {
         background-image: url('../assets/image/anime.jpg');
         background-size: cover;
         background-position: center center;
+        .desc {
+            top: 50%;
+            position: absolute;
+            text-align: center;
+            width: 100%;
+            margin-top: -50px;
+            z-index: 2;
+            color: #fff;
+            text-shadow: 2px 2px 2px #666;
+            h2 {
+                color: #fff;
+                font-size: 40px;
+                display: inline-block;
+            }
+        }
     }
     .content {
         display: flex;

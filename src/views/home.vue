@@ -54,6 +54,7 @@ export default {
     cursor: pointer;
     a {
         color: #fff;
+        font-size: 40px;
     }
 }
 </style>

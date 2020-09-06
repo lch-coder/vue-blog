@@ -153,8 +153,8 @@ export default {
     .right {
         display: inline-block;
         position: fixed;
+        top: 100px;
         width: calc(25% - 20px);
-        margin-top: 100px;
         box-sizing: border-box;
         height: 500px;
         overflow: auto;

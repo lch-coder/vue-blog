@@ -3,12 +3,17 @@
         <div class="nav-content">
             <div class="nav-rows">
                 <ul>
-                    <li :index="item.index" v-for="(item, index) in navList" :key="index">
-                        <router-link :to="item.path">
+                    <router-link
+                        :to="item.path"
+                        :index="item.index"
+                        v-for="(item, index) in navList"
+                        :key="index"
+                    >
+                        <li>
                             <i :class="item.class"></i>
                             {{ item.name }}
-                        </router-link>
-                    </li>
+                        </li>
+                    </router-link>
                 </ul>
             </div>
         </div>
@@ -82,15 +87,15 @@ export default {
             box-sizing: border-box;
             display: inline-block;
             ul {
+                a {
+                    color: #fff;
+                }
                 li {
                     display: inline-block;
                     cursor: pointer;
                     padding: 12px 20px;
                     &:hover {
                         background: rgba(120, 120, 120, 0.6);
-                    }
-                    a {
-                        color: #fff;
                     }
                 }
             }
