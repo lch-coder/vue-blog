@@ -2,7 +2,7 @@
     <div class="container">
         <myNav></myNav>
         <div class="content">
-            <router-view style="width:100%" />
+            <router-view />
         </div>
     </div>
 </template>
@@ -24,7 +24,6 @@ export default {
         display: flex;
         position: absolute;
         width: 85%;
-        justify-content: center;
         top: 61px;
     }
 }

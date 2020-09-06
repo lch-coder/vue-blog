@@ -15,7 +15,7 @@
                     hide-timestamp
                 >
                     <h3 class="title" @click="getArticleDetail(item._id)">{{item.title}}</h3>
-                    <p class="time">{{item.createTime}}</p>
+                    <p class="time">{{$moment(item.createTime).format("YYYY-DD-MM HH:mm:ss")}}</p>
                 </el-timeline-item>
             </el-timeline-item>
         </el-timeline>
