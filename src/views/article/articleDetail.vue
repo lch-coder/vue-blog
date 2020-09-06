@@ -10,10 +10,10 @@
                     <div class="info">
                         <span class="name">{{'articleDetail.author'}}</span>
                         <div class="meta">
-                            <span class="meta-item">{{articleDetail.create_time}}</span>
-                            <span class="meta-item">字数 {{'articleDetail.numbers'}}</span>
+                            <span
+                                class="meta-item"
+                            >{{$moment(articleDetail.createTime).format("YYYY-DD-MM HH:mm:ss")}}</span>
                             <span class="meta-item">阅读 {{articleDetail.views}}</span>
-                            <span class="meta-item">评论 {{'articleDetail.comments'}}</span>
                             <span class="meta-item">喜欢 {{articleDetail.likes}}</span>
                         </div>
                     </div>

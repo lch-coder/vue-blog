@@ -45,18 +45,15 @@
             </template>
             <div v-else style="text-align:center;">暂无数据</div>
         </div>
-        <slider class="slider"></slider>
     </div>
 </template>
 
 <script>
-import slider from '@/components/slider'
 import pagination from '@/components/pagination'
 import loading from '@/components/loading'
 import { mapActions } from 'vuex'
 export default {
     components: {
-        slider,
         pagination,
         loading,
     },
@@ -146,7 +143,7 @@ export default {
             border-top: 1px solid rgba(237, 239, 240, 0.8);
             margin-top: -1px;
             margin-bottom: 0;
-            padding: 10px 0;
+            padding: 20px 0;
             height: 200px;
             .article-img {
                 position: relative;
@@ -196,22 +193,6 @@ export default {
                 }
             }
         }
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    .slider {
-        display: block;
-    }
-}
-@media screen and (max-width: 928px) {
-    .slider {
-        display: none;
-    }
-}
-@media screen and (max-width: 646px) {
-    .slider {
-        display: none;
     }
 }
 </style>
