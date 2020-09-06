@@ -23,7 +23,6 @@ export default {
     .content {
         display: flex;
         position: absolute;
-        min-width: 1200px;
         width: 85%;
         justify-content: center;
         top: 61px;

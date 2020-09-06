@@ -3,17 +3,18 @@
         <div class="left">
             <loading v-if="isLoading"></loading>
             <template v-if="articleList.length>0">
-                <ul>
-                    <li
-                        v-for="article in articleList"
-                        :key="article._id"
-                        class="item"
-                        @click="getArticleDetail(article._id)"
-                    >
-                        <img class="img" :src="article.img_url" />
-                        <div class="content">
-                            <h4 class="title">{{ article.title }}</h4>
-                            <p class="abstract">{{ article.desc }}</p>
+                <div>
+                    <div class="article-list" v-for="article in articleList" :key="article._id">
+                        <div class="article-img" @click="getArticleDetail(article._id)">
+                            <img :src="article.coverUrl" />
+                        </div>
+                        <div class="article-content">
+                            <div class="article-detail">
+                                <h2 @click="getArticleDetail(article._id)">{{ article.title }}</h2>
+                                <div class="article-desc">
+                                    <p>{{ article.desc }}</p>
+                                </div>
+                            </div>
                             <div class="meta">
                                 <span>
                                     <i class="el-icon-view"></i>
@@ -28,12 +29,12 @@
                                 <span>赞 {{ article.likes }}</span>
                                 <span class="time">
                                     发布时间：
-                                    {{ article.create_time }}
+                                    {{ $moment(article.createTime).format("YYYY-DD-MM HH:mm:ss") }}
                                 </span>
                             </div>
                         </div>
-                    </li>
-                </ul>
+                    </div>
+                </div>
                 <pagination
                     @handleSizeChange="handleSizeChange"
                     @handleCurrentChange="handleCurrentChange"
@@ -44,7 +45,7 @@
             </template>
             <div v-else style="text-align:center;">暂无数据</div>
         </div>
-        <slider></slider>
+        <slider class="slider"></slider>
     </div>
 </template>
 
@@ -132,57 +133,85 @@ export default {
 <style scoped lang="less">
 .article {
     display: flex;
-    width: 1200px;
     margin: 0 auto;
     .left {
-        width: 850px;
         -webkit-box-flex: 1;
         -ms-flex: 1;
         flex: 1;
         padding-right: 20px !important;
-        .item {
-            line-height: 20px;
-            position: relative;
-            padding: 15px 0;
-            padding-right: 150px;
-            border-bottom: 1px solid #f0f0f0;
-            word-wrap: break-word;
-            cursor: pointer;
-            text-align: left;
-            .img {
-                position: absolute;
-                top: 50%;
-                margin-top: -50px;
-                right: 0;
-                width: 125px;
-                height: 100px;
+        .article-list {
+            box-sizing: border-box;
+            display: flex;
+            justify-content: flex-start;
+            border-top: 1px solid rgba(237, 239, 240, 0.8);
+            margin-top: -1px;
+            margin-bottom: 0;
+            padding: 10px 0;
+            height: 200px;
+            .article-img {
+                position: relative;
+                flex-shrink: 0;
+                flex: 0 0 40%;
+                max-width: 40%;
+                overflow: hidden;
+                margin: 0 20px 0 0;
+                border-radius: 6px;
+                img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    cursor: pointer;
+                    transition: all 0.6s;
+                }
             }
-            .title {
-                color: #333;
-                margin: 7px 0 4px;
-                display: inherit;
-                font-size: 18px;
-                font-weight: 700;
-                line-height: 1.5;
+            .article-content {
+                display: flex;
+                flex-direction: column;
+                flex: 1 1 auto;
+                justify-content: center;
+                padding: 10px 0;
+                .article-detail {
+                    flex: 1 1 auto;
+                    margin: 10px 0;
+                    h2 {
+                        cursor: pointer;
+                    }
+                    .article-desc {
+                        margin-top: 20px;
+                        p {
+                            color: #6c757d;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 2;
+                            -webkit-box-orient: vertical;
+                            white-space: normal;
+                        }
+                    }
+                }
             }
-            .abstract {
-                min-height: 30px;
-                margin: 0 0 8px;
-                font-size: 13px;
-                line-height: 24px;
-                color: #555;
-            }
-            .meta {
-                padding-right: 0 !important;
-                font-size: 12px;
-                font-weight: 400;
-                line-height: 20px;
-                span {
-                    margin-right: 10px;
-                    color: #666;
+            &:hover {
+                img {
+                    transform: scale(1.1);
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .slider {
+        display: block;
+    }
+}
+@media screen and (max-width: 928px) {
+    .slider {
+        display: none;
+    }
+}
+@media screen and (max-width: 646px) {
+    .slider {
+        display: none;
     }
 }
 </style>

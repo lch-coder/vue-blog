@@ -8,6 +8,9 @@ import './assets/css/index.css'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import moment from 'moment'
+Vue.prototype.$moment = moment
+moment.locale('zh-cn')
 
 Vue.use(Vuex)
 Vue.use(ElementUI)

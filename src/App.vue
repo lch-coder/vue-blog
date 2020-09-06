@@ -45,7 +45,7 @@ export default {
 body,
 td,
 th {
-    font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
-        'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+    font-family: PingFangSC-Regular, 'Microsoft Yahei-Regular',
+        'Microsoft Yahei', Microsoft Sans Serif, sans-serif;
 }
 </style>
