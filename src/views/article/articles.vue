@@ -144,7 +144,7 @@ export default {
             margin-top: -1px;
             margin-bottom: 0;
             padding: 20px 0;
-            height: 200px;
+            height: 254px;
             .article-img {
                 position: relative;
                 flex-shrink: 0;

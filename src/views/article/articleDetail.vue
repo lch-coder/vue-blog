@@ -84,18 +84,16 @@ export default {
 
 <style scoped lang="less">
 .detail {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
     min-height: calc(100vh - 66px);
     padding-top: 10px;
     font-size: 16px;
     width: 100%;
     .left {
+        display: inline-block;
+        box-sizing: border-box;
         width: 75%;
         margin-right: 20px;
         margin-bottom: 2%;
-        flex-shrink: 0;
         .header {
             width: 100%;
             height: 160px;
@@ -153,10 +151,16 @@ export default {
         }
     }
     .right {
-        flex-shrink: 0;
+        display: inline-block;
+        position: fixed;
         width: calc(25% - 20px);
         margin-top: 100px;
         box-sizing: border-box;
+        height: 500px;
+        overflow: auto;
+        border: 1px solid rgba(237, 239, 240, 0.8);
+        border-radius: 4px;
+        padding: 10px;
         /deep/ li {
             padding: 5px 0;
         }

@@ -1,41 +1,18 @@
 <template>
-    <div class="nav">
+    <header class="nav">
         <div class="nav-content">
             <div class="nav-rows">
-                <el-row>
-                    <el-col :span="3">
-                        <router-link to="/">
-                            <img class="logo" src="../assets/avat.jpg" alt />
+                <ul>
+                    <li :index="item.index" v-for="(item, index) in navList" :key="index">
+                        <router-link :to="item.path">
+                            <i :class="item.class"></i>
+                            {{ item.name }}
                         </router-link>
-                    </el-col>
-                    <el-col :span="16">
-                        <ul>
-                            <el-menu
-                                :router="true"
-                                :default-active="activeIndex"
-                                active-text-color="#409eff"
-                                mode="horizontal"
-                                @select="handleSelect"
-                            >
-                                <el-menuItem
-                                    :route="item.path"
-                                    :index="item.index"
-                                    v-for="(item, index) in navList"
-                                    :key="index"
-                                >{{ item.name }}</el-menuItem>
-                            </el-menu>
-                        </ul>
-                    </el-col>
-                    <el-col :span="4">
-                        <div class="nav-right">
-                            <el-button size="small" type="primary">登录</el-button>
-                            <el-button size="small" type="danger">注册</el-button>
-                        </div>
-                    </el-col>
-                </el-row>
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
+    </header>
 </template>
 
 <script>
@@ -48,26 +25,31 @@ export default {
                     index: '0',
                     path: '/',
                     name: '首页',
+                    class: 'el-icon-s-home',
                 },
                 {
                     index: '1',
                     path: '/index/article/list',
                     name: '文章',
+                    class: 'el-icon-document',
                 },
                 {
                     index: '2',
                     path: '/index/article/archive',
                     name: '归档',
+                    class: 'el-icon-folder',
                 },
                 {
                     index: '3',
                     path: '/message',
                     name: '留言',
+                    class: 'el-icon-message',
                 },
                 {
                     index: '4',
                     path: '/about',
                     name: '关于',
+                    class: 'el-icon-coffee-cup',
                 },
             ],
         }
@@ -82,51 +64,36 @@ export default {
 
 <style scoped lang="less">
 .nav {
-    display: flex;
-    justify-content: center;
+    padding: 0;
     position: fixed;
-    top: 0;
     left: 0;
-    z-index: 1000;
     width: 100%;
-    height: 60px;
-    border-bottom: 1px solid #eee;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    border-top: 2px solid #39aa56;
-    background: linear-gradient(120deg, #155799, #159957);
+    z-index: 2;
+    background: rgba(40, 42, 44, 0.6);
     .nav-content {
-        width: 1200px;
+        width: 90%;
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 15px;
         height: 100%;
         .nav-rows {
             position: relative;
             height: 100%;
-            -webkit-box-sizing: border-box;
             box-sizing: border-box;
-            margin-left: -10px;
-            margin-right: -10px;
-            .logo {
-                height: 60px;
-                width: 60px;
-                border-radius: 50%;
-            }
-            /deep/ .el-menu {
-                background-color: transparent;
-            }
-            .el-menu.el-menu--horizontal {
-                border-bottom: none;
-            }
-            .el-menu--horizontal > .el-menu-item {
-                background-color: transparent;
-                cursor: pointer;
-                &:hover {
-                    color: rgb(64, 158, 255);
+            display: inline-block;
+            ul {
+                li {
+                    display: inline-block;
+                    cursor: pointer;
+                    padding: 12px 20px;
+                    &:hover {
+                        background: rgba(120, 120, 120, 0.6);
+                    }
+                    a {
+                        color: #fff;
+                    }
                 }
             }
-        }
-        .nav-right {
-            position: relative;
-            padding-top: 15px;
-            text-align: right;
         }
     }
 }

@@ -1,9 +1,12 @@
 <template>
     <div class="container">
         <myNav></myNav>
+        <div class="bg-top">
+            <div class="bg"></div>
+        </div>
         <div class="content">
             <router-view class="main" />
-            <slider class="slider"></slider>
+            <!-- <slider class="slider"></slider> -->
         </div>
     </div>
 </template>
@@ -23,12 +26,20 @@ export default {
 .container {
     display: flex;
     justify-content: center;
+    .bg-top {
+        height: 320px;
+        position: relative;
+        width: 100%;
+        background-image: url('../assets/image/anime.jpg');
+        background-size: cover;
+        background-position: center center;
+    }
     .content {
         display: flex;
         position: absolute;
         width: 90%;
         max-width: 1200px;
-        top: 61px;
+        top: 321px;
         .main {
             flex: 1;
         }
