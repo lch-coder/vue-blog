@@ -6,7 +6,7 @@
                 <div>
                     <div class="article-list" v-for="article in articleList" :key="article._id">
                         <div class="article-img" @click="getArticleDetail(article._id)">
-                            <img :src="article.coverUrl" />
+                            <img v-lazy="article.coverUrl" :key="article._id" />
                         </div>
                         <div class="article-content">
                             <div class="article-detail">

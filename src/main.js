@@ -12,6 +12,13 @@ import moment from 'moment'
 Vue.prototype.$moment = moment
 moment.locale('zh-cn')
 
+import VueLazyload from 'vue-lazyload'
+
+Vue.use(VueLazyload, {
+  loading: require('./assets/image/loading.jpeg'),//加载中图片，一定要有，不然会一直重复加载占位图
+  error: require('./assets/bg.jpg')  //加载失败图片
+});
+
 Vue.use(Vuex)
 Vue.use(ElementUI)
 
