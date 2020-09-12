@@ -6,6 +6,7 @@ const vueLoaderConfig = require('./vue-loader.conf')
 const HappyPack = require('happypack');
 const os = require('os')
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
+const webpack = require('webpack')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -33,7 +34,7 @@ module.exports = {
   },
   output: {
     path: config.build.assetsRoot,// 导出目录的绝对路径 在项目的根目录下 会新建dist文件夹
-    filename: '[name].js',// 导出文件的文件名
+    filename: '[name].[hash].js',// 导出文件的文件名
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
@@ -104,7 +105,11 @@ module.exports = {
       threadPool: happyThreadPool,
       //允许 HappyPack 输出日志
       verbose: true,
-    })
+    }),
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('../static/js/vendor-manifest.json') // 指向生成的manifest.json
+    }),
   ],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
